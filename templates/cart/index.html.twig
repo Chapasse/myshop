@@ -24,7 +24,7 @@
                 <tr>
                 <td>{{item.product.titre}}</td>
                 <td>{{item.product.prix}} €</td>
-                <td>{{item.quantite}}</td>
+                <td> <a href="{{path('cart_decrease', {id:item.product.id})}}"><i class="fas fa-minus mx-2"></i></a> {{item.quantite}} <a href="{{path('cart_add', {id:item.product.id})}}"><i class="fas fa-plus mx-2"></i></a> </i></td>
                 <td>{{item.product.prix * item.quantite}} €</td>
                 <td>
                     <a href="{{path('cart_remove', {id:item.product.id})}}" class="btn-sm btn-danger">

@@ -31,11 +31,11 @@ class CommandeCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            AssociationField::new('id_membre')->renderAsNativeWidget(),
-            AssociationField::new('id_product')->renderAsNativeWidget(),
             IntegerField::new('quantite'),
             NumberField::new('montant')->setNumDecimals(2),
             ChoiceField::new('etat')->setChoices(['en cours  de traitement'=>'en cours  de traitement','envoyé'=>'envoye','livré'=>'livre']),
+            AssociationField::new('id_membre')->renderAsNativeWidget(),
+            AssociationField::new('id_product')->renderAsNativeWidget(),
             DateTimeField::new('date_enregistrement')->setFormat("d/M/Y à H:m:s")->hideOnForm(),    
         ];
     }

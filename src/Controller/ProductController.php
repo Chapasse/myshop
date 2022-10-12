@@ -19,6 +19,16 @@ class ProductController extends AbstractController
         ]);
     }
 
+    #[Route('/show/{id}', name:'show')]
+    public function show($id, ProductRepository $repo)
+    {
+        $product = $repo->find($id);
+        return $this->render("product/show.html.twig",[
+            "product" => $product,
+            "id" => $product->getId()
+        ]);
+    }
+
     #[Route('/profil', name: 'profil')]
     public function profil(CommandeRepository $repo)
     {

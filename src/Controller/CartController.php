@@ -40,8 +40,9 @@ class CartController extends AbstractController
                 } else {
                     $commande->setQuantite($product['quantite']);
                 }
-                $quantite=$product['quantite'];
-                
+                if ($quantite > $stock):
+                    $quantite = $stock;
+                endif;
                 $commande->setMontant($prix);
                 $commande->setEtat('en cours de traitement');
                 $commande->setIdProduct($product['product']);
@@ -67,13 +68,20 @@ class CartController extends AbstractController
     public function add($id, CartService $cs) 
     {
         $cs->add($id);        
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('app_cart');
     }
 
     #[Route("/cart/remove/{id}", name:"cart_remove")]
     public function remove($id, CartService $cs)
     {
         $cs->remove($id);
+        return $this->redirectToRoute('app_cart');
+    }
+
+    #[Route("/cart/decrease/{id}", name:"cart_decrease")]
+    public function decrease($id, CartService $cs)
+    {
+        $cs->decrease($id);
         return $this->redirectToRoute('app_cart');
     }
 

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MyShop{% endblock %}
+
+{% block body %}
+<div class="card mb-3 text-center">
+    <div class="card-header">
+        <h3>{{product.titre}}</h3>
+    </div>
+    <div class="card-body">
+        <div class="container">
+        <p>{{product.description}}</p>
+        <p>taille : {{product.taille}} <br>couleur: {{product.couleur}}</p>
+        <img src="{{product.photo}}" alt="Photo du vehicule à louer" width="50%">
+        <p>prix : {{product.prix}} €</p>
+        </div>
+    </div>
+    <a href="{{path("cart_add", {id: product.id})}}" class="card-link btn btn-secondary">Ajouter au panier</a>
+</div>    
+
+
+
+{% endblock %}

@@ -19,26 +19,29 @@ class CartService
 
     public function add($id)
     {
-        // nous allons récupérer ou créer une session (si elle n'existe pas) grâce à la classe RequestStack
         $session = $this->rs->getSession();
 
         $cart = $session->get('cart', []);
-        // je récupère l'attribut de session 'cart' s'il existe ou un tableau vide
 
-        // si le produit existe déjà, j'incrémente sa quantité
         if (!empty($cart[$id])) 
         {
             $cart[$id]++;
-            // équivaut à $cart[$id] = $cart[$id]+1
         }
         else
         {
             $cart[$id] = 1;
-            // dans mon tableau $cart, à la case $id, j'insère la valeur 1
         }
+        // if(!empty($cart[$id])):
+        //     if($addQuantite > 1):
+        //         $cart[$id] += $addQuantite;
+        //     else:
+        //         $cart[$id]++;
+        //     endif;
+        // else:
+        //     $cart[$id] = $addQuantite;
+        // endif;
 
         $session->set('cart', $cart);
-        // je sauvegarde l'état de mon panier en session à l'attribut de session 'cart'
     }
 
     public function remove($id)
@@ -89,4 +92,21 @@ class CartService
         
         return $total;
     }
+    
+    public function decrease($id)
+    {
+        $session = $this->rs->getSession();
+        $cart = $session->get('cart', []);
+ 
+        if ($cart[$id] > 1) 
+        {
+            $cart[$id]--;
+        } else {
+ 
+            unset($cart[$id]);
+             
+        }
+        return $session->set('cart', $cart);
+    }
+ 
 }

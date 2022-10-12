@@ -44,24 +44,69 @@
 
 
 <h2>Vos commandes</h2>
+{% set date = "" %}
+{% set NewTotal = 0 %}
 {% for commande in commandes %}
-    {% if commande.idMembre.id == app.user.id %}
-        <div class="card mb-3 text-center">
-            <div class="card-header">
-                <h3>Commande du {{commande.dateEnregistrement|date("d/m/Y à H:i:s")}}</h3>
-            </div>
-            <div class="card-body">
-                <h4 class="card-title">{{ commande.quantite }} {{commande.idproduct.titre}}</h4>
-                <div class="container">
-                <p>taille : {{commande.idproduct.taille}} <br>couleur: {{commande.idproduct.couleur}}</p>
-                <img src="{{commande.idproduct.photo}}" alt="Photo du vehicule à louer" width="50%">
-                <p>prix total : {{commande.montant}} €</p>
-                </div>
-            </div>
-        </div>    
-    
-    {% endif %}
 
+{% if commande.idMembre.id == app.user.id %}
+{% set dateTemp = commande.dateEnregistrement|date("d/m/y à H:i:s") %}
+{% if date == dateTemp and date != "" %}
+    <hr>
+    <h4 class="card-title">{{commande.idproduct.titre}}</h4>
+                <p class="card-text">
+                quantité : {{commande.quantite}}
+                </p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-10">Etat de la commande : {{commande.etat}}</div>
+                        <div class="col-2"><h5>Prix Total : {{ commande.montant }}€</h5></div>
+                    </div>
+                </div>
+    {% set NewTotal = total + commande.montant %}
+    
+
+{% elseif date == "" %}
+<div class="card border-success mb-3" style="max-width: 80vw;">
+            <div class="card-header"><h3>Commande du {{commande.dateEnregistrement|date("d/m/y à H:i:s")}}</h3></div>
+            <div class="card-body">
+                <h4 class="card-title">{{commande.idproduct.titre}}</h4>
+                <p class="card-text">
+                quantité : {{commande.quantite}}
+                </p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-10">Etat de la commande : {{commande.etat}}</div>
+                        <div class="col-2"><h5>Prix Total : {{ commande.montant }}€</h5></div>
+                    </div>
+                </div>
+{% set total = commande.montant %}
+
+
+{% else %}
+{% if NewTotal != 0 %}<h3>Prix total de la commande : {{NewTotal}} €{% set NewTotal = 0  %}</h3>{% endif %}
+</div></div>
+<div class="card border-success mb-3" style="max-width: 80vw;">
+            <div class="card-header"><h3>Commande du {{commande.dateEnregistrement|date("d/m/y à H:i:s")}}</h3></div>
+            <div class="card-body">
+                <h4 class="card-title">{{commande.idproduct.titre}}</h4>
+                <p class="card-text">
+                quantité : {{commande.quantite}}
+                </p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-10">Etat de la commande : {{commande.etat}}</div>
+                        <div class="col-2"><h5>Prix Total : {{ commande.montant }}€</h5></div>
+                    </div>
+                </div>
+{% set total = commande.montant %}
+{% endif %}
+
+{% set date = commande.dateEnregistrement|date("d/m/y à H:i:s") %}
+{% endif %}
+
+    
 {% endfor %}
+{% if NewTotal != 0 %}<h3>Prix total de la commande : {{NewTotal}} €</h3>{% endif %}
+</div></div>
 
 {% endblock %}

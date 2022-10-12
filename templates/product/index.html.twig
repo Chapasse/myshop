@@ -21,7 +21,7 @@
                         <p class="card-text text-end fw-bold">{{ item.prix }}€</p>
 					</div>
 					<div class="card-body text-end">
-						<a href="{{path("cart_add", {id: item.id})}}" class="card-link btn btn-primary">Ajouter au panier</a>
+						<a href="{{path("show", {id: item.id})}}" class="card-link btn btn-primary">Voire</a>
 					</div>
 				</div>
 			</div>
@@ -36,7 +36,7 @@
                         <p class="card-text text-end fw-bold">{{ item.prix }}€</p>
 					</div>
 					<div class="card-body text-end">
-						<a href="{{path("cart_add", {id: item.id})}}" class="card-link btn btn-secondary disabled">Ajouter au panier</a>
+						<a href="{{path("show", {id: item.id})}}" class="card-link btn btn-secondary disabled">Voire</a>
 					</div>
 				</div>
 			</div>
