@@ -49,16 +49,9 @@
         </li>         
         {% endif %}
         {% if is_granted("ROLE_ADMIN") %}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">BACKOFICE</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{ path('admin') }}">backoffice</a>
-            <a class="dropdown-item" href="#">Membres</a>
-            <a class="dropdown-item" href="#">Products</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-          </div>
-        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('admin') }}">Backoffice</a>
+        </li>         
         {% endif %}
       </ul>
     </div>
