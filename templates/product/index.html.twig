@@ -34,7 +34,7 @@
 					<div class="card-body">
 						<p class="card-text">{{ item.description }}</p>
                         <p class="card-text">Victime de son succès</p>
-                        <p class="card-text text-end fw-bold">{{ item.prix }}€</p>
+                        <p class="card-text text-end fw-bold">{{ item.prix|number_format(2) }}€</p>
 					</div>
 					<div class="card-body text-end">
 						<a href="{{path("show", {id: item.id})}}" class="card-link btn btn-secondary disabled">Voire</a>
