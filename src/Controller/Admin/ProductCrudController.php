@@ -34,7 +34,7 @@ class ProductCrudController extends AbstractCrudController
             TextField::new('photo'),
             MoneyField::new('prix')->setCurrency('EUR'),
             IntegerField::new('stock'),
-            // DateTimeField::new('date_enregistrement')->setFormat("d/m/Y à H:m:s")->hideOnForm(),
+            DateTimeField::new('date_enregistrement')->setFormat("d/m/Y à H:m:s")->hideOnForm(),
         ];
     }
 
