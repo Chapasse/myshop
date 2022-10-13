@@ -54,7 +54,7 @@ class CartController extends AbstractController
                 $cs->remove($product['product']->getId());
                 
             }
-            $this->addFlash('success', 'Votre commande a bein été enregistrée');
+            $this->addFlash('success', 'Votre commande a bien été enregistrée');
             return $this->redirectToRoute('home');
         }
 

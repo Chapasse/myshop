@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Product;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
@@ -31,7 +32,7 @@ class ProductCrudController extends AbstractCrudController
             ChoiceField::new('taille')->setChoices(['XS'=> 'XS','S' => 'S','L' => 'L','XL' => 'XL']),
             ChoiceField::new('collection')->setChoices(['m'=>'masculin','f' => 'feminin', 'e' => 'enfant']),
             TextField::new('photo'),
-            NumberField::new('prix')->setNumDecimals(2),
+            MoneyField::new('prix')->setCurrency('EUR'),
             IntegerField::new('stock'),
             DateTimeField::new('date_enregistrement')->setFormat("d/m/Y à H:m:s")->hideOnForm(),
         ];
