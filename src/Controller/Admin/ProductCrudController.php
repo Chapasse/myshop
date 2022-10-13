@@ -32,7 +32,7 @@ class ProductCrudController extends AbstractCrudController
             ChoiceField::new('taille')->setChoices(['XS'=> 'XS','S' => 'S','L' => 'L','XL' => 'XL']),
             ChoiceField::new('collection')->setChoices(['m'=>'masculin','f' => 'feminin', 'e' => 'enfant']),
             TextField::new('photo'),
-            MoneyField::new('prix')->setCurrency('EUR'),
+            NumberField::new('prix')->setNumDecimals(2),
             IntegerField::new('stock'),
             DateTimeField::new('date_enregistrement')->setFormat("d/M/Y à H:m:s")->hideOnForm(),
         ];
