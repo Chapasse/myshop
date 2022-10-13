@@ -39,7 +39,7 @@ class MembreCrudController extends AbstractCrudController
             TextField::new('email'),
             ChoiceField::new('civilite')->setChoices(['masculin'=>'m','feminin' => 'f', 'transgenre' => 'trans']),
             CollectionField::new('roles')->setTemplatePath('admin/field/roles.html.twig'),
-            DateTimeField::new('date_enregistrement')->setFormat("d/M/Y à H:m:s")->renderAsNativeWidget()->hideOnForm(),
+            DateTimeField::new('date_enregistrement')->hideOnForm(),
         ];
     }
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
