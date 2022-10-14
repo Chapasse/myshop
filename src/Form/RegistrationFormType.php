@@ -41,10 +41,10 @@ class RegistrationFormType extends AbstractType
             ->add('email')
             ->add('civilite', ChoiceType::class,[
                 'choices' => [
-                    'M' => 'Homme',
-                    'Mme' => 'Femme',
-                    'Trans' => 'Transgenre'
-                ]
+                    'masculin'=>'m',
+                    'feminin' => 'f', 
+                    'transgenre' => 'trans'
+                    ]
             ])
 
         ;
