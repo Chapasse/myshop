@@ -36,7 +36,7 @@ class CartController extends AbstractController
                 $commande->setDateEnregistrement(new \DateTime);
                 if ($quantite > $stock) {
                     $commande->setQuantite($stock);
-                    $this->addFlash('warning', 'Nous ne pouvons pas assurer la totalité de votre commande mais uniquement '.$stock.' Tshirts que nosu avons en stock');
+                    $this->addFlash('warning', 'Nous ne pouvons pas assurer la totalité de votre commande mais uniquement '.$stock.' '.$product['product']->getTitre().' que nous avons en stock');
                 } else {
                     $commande->setQuantite($product['quantite']);
                 }
